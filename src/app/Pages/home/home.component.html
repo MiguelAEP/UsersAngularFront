@@ -1,0 +1,43 @@
+<div class="d-flex flex-column">
+  <h2>Principal</h2>
+  <hr />
+  <table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Tipo Documento</th>
+        <th scope="col">Numero Documento</th>
+        <th scope="col">Genero</th>
+        <th scope="col">Area</th>
+        <th scope="col">Eventos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let users of usuarios">
+        <th scope="row">{{ users.id }}</th>
+        <td>{{ users.nombre }}</td>
+        <td>{{ users.apellido }}</td>
+        <td>{{ users.usuarioEnum }}</td>
+        <td>{{ users.numeroDocumento }}</td>
+        <td>{{ users.generoEnum }}</td>
+        <td>{{ users.areaEnum }}</td>
+        <td>
+          <button class="btn btn-outline-primary" (click)="editarUser(users)">
+            editar
+          </button>
+          <button class="btn btn-outline-danger" (click)="deleteUser(users)">
+            eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!--
+  <div *ngIf="mensajeEliminado" class="card bg-danger text-white text-center">
+    usuario eliminado
+  </div>
+  -->
+</div>

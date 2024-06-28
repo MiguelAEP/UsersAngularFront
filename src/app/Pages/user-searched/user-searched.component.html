@@ -1,0 +1,109 @@
+<div class="d-flex flex-column">
+  <h2>Formulario para Actualizar</h2>
+  <hr />
+
+  <form (ngSubmit)="actualizar()" [formGroup]="miFormulario">
+    <div class="mb-3">
+      <input
+        [ngClass]="{ 'is-invalid': hasErrors('nombre', 'required') }"
+        formControlName="nombre"
+        type="text"
+        class="form-control"
+        placeholder="Ingrese nombre"
+      />
+      <div class="text-danger" *ngIf="hasErrors('nombre', 'required')">
+        Nombre Requerido
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <input
+        [ngClass]="{ 'is-invalid': hasErrors('apellido', 'required') }"
+        formControlName="apellido"
+        type="text"
+        class="form-control"
+        placeholder="Ingrese apellido"
+      />
+      <div class="text-danger" *ngIf="hasErrors('apellido', 'required')">
+        Apellido requerido
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <select
+        [ngClass]="{ 'is-invalid': hasErrors('usuarioEnum', 'required') }"
+        formControlName="usuarioEnum"
+        class="form-select"
+      >
+        <option selected>Elija tipo de documento</option>
+        <option value="DNI">DNI</option>
+        <option value="PASAPORTE">PASAPORTE</option>
+      </select>
+      <div class="text-danger" *ngIf="hasErrors('usuarioEnum', 'required')">
+        Seleccione una opcion
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <input
+        [ngClass]="{ 'is-invalid': hasErrors('numeroDocumento', 'required') }"
+        formControlName="numeroDocumento"
+        type="text"
+        class="form-control"
+        placeholder="Ingrese numero documento"
+      />
+      <div class="text-danger" *ngIf="hasErrors('numeroDocumento', 'required')">
+        Campo requerido
+      </div>
+
+      <div
+        class="text-danger"
+        *ngIf="hasErrors('numeroDocumento', 'maxlength')"
+      >
+        Maximo 8 numeros
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <select
+        [ngClass]="{ 'is-invalid': hasErrors('generoEnum', 'required') }"
+        class="form-select"
+        formControlName="generoEnum"
+      >
+        <option selected>Elija su genero</option>
+        <option value="MASCULINO">MASCULINO</option>
+        <option value="FEMENINO">FEMENINO</option>
+      </select>
+      <div class="text-danger" *ngIf="hasErrors('generoEnum', 'required')">
+        Elija una opcion
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <select
+        [ngClass]="{ 'is-invalid': hasErrors('areaEnum', 'required') }"
+        class="form-select"
+        formControlName="areaEnum"
+      >
+        <option selected>Elija su area de trabajo</option>
+        <option value="SISTEMAS">SISTEMAS</option>
+        <option value="PROYECTOS">PROYECTOS</option>
+        <option value="TESORERIA">TESORERIA</option>
+        <option value="CONTABILIDAD">CONTABILIDAD</option>
+      </select>
+      <div class="text-danger" *ngIf="hasErrors('areaEnum', 'required')">
+        Elija una opcion
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Actualizar</button>
+
+    <div *ngIf="submited && !miFormulario.valid" class="text-danger">
+      Complete correctamente el formulario
+    </div>
+
+    <div *ngIf="submited && miFormulario.valid" class="text-primary">
+      Usuario actualizado con exito
+    </div>
+  </form>
+</div>
